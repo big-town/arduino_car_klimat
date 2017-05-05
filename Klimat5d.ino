@@ -28,7 +28,7 @@ void setup(void)
   display.setTextColor(WHITE); // Цвет текста.
   display.setTextSize(2); // Размер текста (2).
   display.setCursor(0,0); // Устанавливаем курсор в 0  0
-  //Serial.begin(115200);
+ // Serial.begin(115200);
   //Определяем режим пинов 5,4,3
   pinMode(5,INPUT);
   pinMode(4,INPUT);
@@ -82,11 +82,21 @@ void loop(void)
   //Serial.println(Delta2);
   if( (abs(Delta2)>=abs(Delta)) && (abs(Delta2)>2) ){
     setPos(posReg-copysign(1,Delta2));
+    //Serial.print("Delta2>=10");}Serial.print("2 ");
   }
-   if(Delta2>=7 && Delta2<10) setPos(minPos+3);
-   if(Delta2<=-7 && Delta2<-10) setPos(maxPos-3);
-   if(Delta2>=10 ) setPos(minPos);
-   if(Delta2<=-10 ) setPos(maxPos);
+  /*
+   if(Delta2>=7 && Delta2<10) {
+      setPos(minPos+3);//Serial.println("Delta2>=7 && Delta2<10");}
+   }
+   if(Delta2<=-7 && Delta2>-10) {
+      setPos(maxPos-3);//Serial.println("Delta2<=-7 && Delta2<-10");}
+   }*/
+   if(Delta2>=10 ) { 
+    setPos(minPos);//Serial.println("Delta2>=10");}
+   }
+   if(Delta2<=-10 ) { 
+      setPos(maxPos);//Serial.println("Delta2<=-10");}
+   }
 }
 
 void printTemp()
@@ -122,9 +132,6 @@ void ReadKeyTemp()//Опрос клавиатуры
     KeyTimer=millis();
   }  
    
-  if(ButtonC==HIGH) CountPress++; else CountPress=0;
-  if(CountPress>=5) setDelay();//Если средняя клавиша была нажата в течении 5ти циклов то переходим к функции установки паузы
-  
   if(!ManualTemp)//Если автоматический режим
   {
     if(ButtonL==HIGH && SetTemp>0)//Если нажата левая клавиша  температура больше 0 
@@ -149,16 +156,19 @@ void ReadKeyTemp()//Опрос клавиатуры
       setPos(posReg);//Устанавливае позицию
     }
   }
-  
+   
   if((ButtonC==HIGH) && ManualTemp) //Если нажата центральная клавиша и режим ручной
   {
     ManualTemp=0;//Меняем режим
   }
   else if((ButtonC==HIGH) && !ManualTemp) //Если нажата центральная клавиша и автоматический ручной
   {                                              
-    
     ManualTemp=1;//Меняем режим
   } 
+ 
+  if(ButtonC==HIGH) CountPress++; else CountPress=0;
+  if(CountPress>=5) setDelay();//Если средняя клавиша была нажата в течении 5ти циклов то переходим к функции установки паузы
+ 
   ButtonR=LOW;
   ButtonC=LOW;
   ButtonL=LOW;
