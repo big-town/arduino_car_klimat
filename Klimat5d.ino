@@ -80,7 +80,7 @@ void loop(void)
   Delta2=CurrTemp-SetTemp;
   //Serial.print("2 ");
   //Serial.println(Delta2);
-  if( (abs(Delta2)>=abs(Delta)) && (abs(Delta2)>2) ){
+  if( (abs(Delta2)>=abs(Delta)) && (abs(Delta2)>2) && (ManualTemp==0) ){
     setPos(posReg-copysign(1,Delta2));
     //Serial.print("Delta2>=10");}Serial.print("2 ");
   }
