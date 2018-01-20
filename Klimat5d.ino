@@ -6,9 +6,9 @@
 #include <Wire.h>
 #include <Adafruit_SSD1306.h> // Скачанная библиотека для дисплея.
 
-volatile boolean KeyPressed=false;
-volatile unsigned long KeyTimer=0;
-volatile int CurrTemp=0;
+boolean KeyPressed=false;
+unsigned long KeyTimer=0;
+int CurrTemp=0;
 byte ButtonR=LOW,ButtonC=LOW,ButtonL=LOW;
 unsigned long MainDelayMillis = 0,FastDelayMillis=0;
 Servo servo;//Подключаем библиотеку для управления сервоприводом
