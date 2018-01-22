@@ -1,10 +1,10 @@
 # arduino_car_klimat
 Климат контроль на ардуино.
 Сайт проекта https://www.drive2.ru/b/1970102/
-Компиляция производилась на arduino 1.8.2 c версиями библиотек на 05.05.2017.
+Компиляция производилась на arduino 1.8.5 c версиями библиотек на 05.05.2017.
 
 Зависимости:
-
+https://github.com/adafruit/Adafruit-GFX-Library
 https://github.com/adafruit/Adafruit_SSD1306 
 
 #здесь надо поправить Adafruit_SSD1306.h
@@ -15,7 +15,6 @@ https://github.com/adafruit/Adafruit_SSD1306
 
 https://github.com/milesburton/Arduino-Temperature-Control-Library
 
-https://github.com/PaulStoffregen/OneWire
 Практический совет по пользыванию климата. САМОЕ ВАЖНОЕ ЭТО ПОДОБРАТЬ ОПТИМАЛЬНУЮ ПАУЗУ!
 Нажимаем на среднюю кнопку в течении пяти секунд, попадаем в меню пауза, после установки нажимаем повтороно.
 Не обращайте внимание на то что температура будет сильно скакать, помните это температура воздуховода а не салона.
