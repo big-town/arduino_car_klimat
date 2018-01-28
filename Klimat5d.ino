@@ -91,10 +91,10 @@ void loop(void)
    if(Delta2<=-7 && Delta2>-10) {
       setPos(maxPos-3);//Serial.println("Delta2<=-7 && Delta2<-10");}
    }*/
-   if(Delta2>=10 ) { 
+   if((Delta2>=20) && (ManualTemp==0) ) { 
     setPos(minPos);//Serial.println("Delta2>=10");}
    }
-   if(Delta2<=-10 ) { 
+   if((Delta2<=-20) && (ManualTemp==0) ) { 
       setPos(maxPos);//Serial.println("Delta2<=-10");}
    }
 }
