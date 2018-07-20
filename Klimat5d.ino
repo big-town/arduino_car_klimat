@@ -36,9 +36,14 @@ void setup(void)
   
   sensors.begin(); //Стартуем термометр
   delay(100);
-  
-  SetTemp=EEPROM.read(0);//Читаем сохраненную температуру в EEPROM
-  if(SetTemp<0 || SetTemp>80) SetTemp=18; //Если вне диапазона 0..80 тогда устанавливаем 18
+  sensors.requestTemperatures();//Делаем опрос термометров
+  delay(100);
+  CurrTemp=sensors.getTempCByIndex(0);//Считываем температуру
+  if(CurrTemp<18) setPos(17);
+  if((CurrTemp>=18) && (CurrTemp<=28))  setPos(9);
+  if(CurrTemp>28) setPos(1);
+  //SetTemp=EEPROM.read(0);//Читаем сохраненную температуру в EEPROM
+  //if(SetTemp<0 || SetTemp>80) SetTemp=18; //Если вне диапазона 0..80 тогда устанавливаем 18
   ManualTemp=EEPROM.read(4);//Читаем режим 
   Pause=EEPROM.read(12);//Считываем значение паузы
   
@@ -90,13 +95,14 @@ void loop(void)
    }
    if(Delta2<=-7 && Delta2>-10) {
       setPos(maxPos-3);//Serial.println("Delta2<=-7 && Delta2<-10");}
-   }*/
+   }
    if((Delta2>=20) && (ManualTemp==0) ) { 
     setPos(minPos);//Serial.println("Delta2>=10");}
    }
    if((Delta2<=-20) && (ManualTemp==0) ) { 
       setPos(maxPos);//Serial.println("Delta2<=-10");}
    }
+   */
 }
 
 void printTemp()
