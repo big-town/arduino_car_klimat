@@ -44,11 +44,11 @@ void setup(void)
 
     SetTemp = EEPROM.read(0); //Читаем сохраненную температуру в EEPROM
     //if(SetTemp<0 || SetTemp>80) SetTemp=18; //Если вне диапазона 0..80 тогда устанавливаем 18
-    if (SetTemp < 11)
+    if (SetTemp < 12)
         setPos(1);
-    if ((SetTemp >= 11) && (SetTemp <= 20))
+    if ((SetTemp >= 12) && (SetTemp <= 40))
         setPos(9);
-    if (SetTemp > 21)
+    if (SetTemp > 41)
         setPos(17);
     ManualTemp = EEPROM.read(4); //Читаем режим
     Pause = EEPROM.read(12);     //Считываем значение паузы
